@@ -5,16 +5,28 @@ import BookmarkedBlogs from "./BookmarkedBlogs";
 
 const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
+  const [bookmarkedBlogs, setBookmarkedBlogs] = useState([]);
   useEffect(() => {
     fetch("blogs.json")
       .then((res) => res.json())
       .then((data) => setBlogs(data));
   }, []);
+
+  const handleAddToBookmark = (blog) => {
+    // console.log("Bookmark added");
+    // console.log(blog);
+    setBookmarkedBlogs([...bookmarkedBlogs, blog]);
+    console.log(bookmarkedBlogs);
+  };
   return (
     <div className='flex justify-between gap-6 items-start mt-4'>
       <div className='w-1/2 mx-auto'>
         {blogs.map((blog) => (
-          <Blog key={blog.id} blog={blog} />
+          <Blog
+            key={blog.id}
+            blog={blog}
+            handleAddToBookmark={handleAddToBookmark}
+          />
         ))}
       </div>
       {/* right side  */}
@@ -24,7 +36,7 @@ const Blogs = () => {
             Spent Time on read :
           </h1>
         </div>
-        <BookmarkedBlogs />
+        <BookmarkedBlogs bookmarkedBlogs={bookmarkedBlogs} />
       </div>
     </div>
   );

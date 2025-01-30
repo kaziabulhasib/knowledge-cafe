@@ -1,4 +1,6 @@
-const Blog = ({ blog }) => {
+import { useState } from "react";
+
+const Blog = ({ blog, handleAddToBookmark }) => {
   const {
     id,
     cover,
@@ -9,6 +11,7 @@ const Blog = ({ blog }) => {
     reading_time,
     hashtags,
   } = blog;
+
   return (
     <div>
       <div className='my-6'>
@@ -40,7 +43,9 @@ const Blog = ({ blog }) => {
           </span>
         ))}
       </p>
-      <button className='text-blue-600 underline text-xs cursor-pointer '>
+      <button
+        onClick={() => handleAddToBookmark(blog)}
+        className='text-blue-600 underline text-xs cursor-pointer '>
         Mark as read
       </button>
     </div>
