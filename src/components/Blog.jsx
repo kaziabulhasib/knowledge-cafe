@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { CiBookmark } from "react-icons/ci";
 
-const Blog = ({ blog, handleAddToBookmark }) => {
+const Blog = ({ blog, handleAddToBookmark, handleMarkRead }) => {
   const {
     id,
     cover,
@@ -47,9 +47,12 @@ const Blog = ({ blog, handleAddToBookmark }) => {
             </span>
           ))}
         </p>
-        <button className='text-blue-600 underline text-xs cursor-pointer '>
+        <button
+          onClick={() => handleMarkRead(reading_time)}
+          className='text-blue-600 underline text-xs cursor-pointer '>
           Mark as read
         </button>
+        {/* <h1>Total time : {readingtime}</h1> */}
       </div>
     </div>
   );
