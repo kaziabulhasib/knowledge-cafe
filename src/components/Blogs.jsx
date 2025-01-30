@@ -20,7 +20,7 @@ const Blogs = () => {
   };
   return (
     <div className='flex justify-between gap-6 items-start mt-4'>
-      <div className='w-1/2 mx-auto'>
+      <div className='w-1/2'>
         {blogs.map((blog) => (
           <Blog
             key={blog.id}
@@ -30,9 +30,9 @@ const Blogs = () => {
         ))}
       </div>
       {/* right side  */}
-      <div>
+      <div className='w-1/3'>
         <div>
-          <h1 className='bg-violet-200 border border-violet-600 text-violet-700 px-6 py-2 font-bold text-sm rounded-md my-6'>
+          <h1 className='bg-violet-200 border border-violet-300 text-violet-700 px-6 py-3 font-bold text-sm rounded-md my-6'>
             Spent Time on read :
           </h1>
         </div>

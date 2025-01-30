@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { CiBookmark } from "react-icons/ci";
 
 const Blog = ({ blog, handleAddToBookmark }) => {
   const {
@@ -22,32 +23,34 @@ const Blog = ({ blog, handleAddToBookmark }) => {
         <div className='flex justify-between'>
           <div className='flex justify-between'>
             <img className='h-12 w-12' src={author_img} alt='' />
-            <div>
-              <h1>{author}</h1>
-              <p>{posted_date}</p>
+            <div className='text-start ml-4'>
+              <h1 className='font-semibold mb-1'>{author}</h1>
+              <p className='text-xs'>{posted_date}</p>
             </div>
           </div>
-          <div className='flex justify-between gap-2'>
-            <p>{reading_time} reading time</p>
-            <p>icon</p>
+          <div className='flex justify-between items-center gap-2'>
+            <p className='text-gray-500'>{reading_time} reading time</p>
+            <p onClick={() => handleAddToBookmark(blog)}>
+              <CiBookmark className='text-xl cursor-pointer' />
+            </p>
           </div>
         </div>
       </div>
       {/* bottom div */}
-      <h1>{title}</h1>
-      {/* hastags  */}
-      <p>
-        {hashtags.map((hashtag, idx) => (
-          <span className='mx-1' key={idx}>
-            #{hashtag}
-          </span>
-        ))}
-      </p>
-      <button
-        onClick={() => handleAddToBookmark(blog)}
-        className='text-blue-600 underline text-xs cursor-pointer '>
-        Mark as read
-      </button>
+      <div className='text-start mx-6 my-8 space-y-6'>
+        <h1 className='text-2xl font-bold w-3/4'>{title}</h1>
+        {/* hastags  */}
+        <p>
+          {hashtags.map((hashtag, idx) => (
+            <span className='mr-2 text-gray-600 text-sm font-medium' key={idx}>
+              #{hashtag}
+            </span>
+          ))}
+        </p>
+        <button className='text-blue-600 underline text-xs cursor-pointer '>
+          Mark as read
+        </button>
+      </div>
     </div>
   );
 };
